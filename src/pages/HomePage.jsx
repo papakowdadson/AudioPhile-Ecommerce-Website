@@ -1,0 +1,26 @@
+import Banner from "../features/home/Banner";
+import ScreenCap from "../layout/ScreenCap";
+import ProductsSection from "../features/home/ProductsSection";
+import TrendingProductsSection from "../features/home/TrendingProductsSection";
+import VisionSection from "../features/home/VisionSection";
+import UseProducts from "../Hooks/UseProducts";
+
+const HomePage = () => {
+  const {products, loading, error} = UseProducts();
+
+  return (
+    <div className="flex flex-col justify-between">
+      <Banner/>
+      <ScreenCap>
+        <div className="my-24 space-y-24">
+          <ProductsSection/>
+          <TrendingProductsSection/>
+          <VisionSection/>
+        </div>
+      </ScreenCap>
+      
+    </div>
+  );
+};
+
+export default HomePage;
