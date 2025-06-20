@@ -5,7 +5,7 @@ import TwitterIcon from '../assets/shared/desktop/icon-twitter.svg'
 
 const SocailsSection = () => {
   return (
-    <div className='flex gap-8 h-full'>
+    <div className='flex flex-row gap-8 h-full'>
         <img src={FacebookIcon} alt='facebookicon'/>
         <img src={TwitterIcon} alt='twitterIcon'/>
         <img src={InstagramIcon} alt='instagramIcon'/>

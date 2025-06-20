@@ -5,9 +5,7 @@ const CartItem = ({item,handleIncrement,handleDecrement}) => {
   return (
     <div className='flex justify-between items-center gap-10'>
         <div className='flex gap-4'>
-            <div className=''>
-                <img alt={item.name} src={item.image} className='rounded-md' />
-            </div>
+            <img alt={item.name} src={item.image} className='rounded-md h-16 w-16 object-cover' />
             <div className='flex flex-col justify-between'>
                 <h1 className='text-body font-bold text-secondary_black'>
                     {item.name}
@@ -18,7 +16,7 @@ const CartItem = ({item,handleIncrement,handleDecrement}) => {
 
             </div>
         </div>
-        <CartCounterButton label={item.qty} handleDecrement={handleDecrement} handleIncrement={handleIncrement}/>
+        <CartCounterButton label={item.qty} handleDecrement={handleDecrement} handleIncrement={handleIncrement} item={item}/>
       
     </div>
   )

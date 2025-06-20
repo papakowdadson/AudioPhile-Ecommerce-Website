@@ -9,6 +9,7 @@ import CheckoutModal from "../features/checkout/CheckoutModal";
 const CheckoutPage = () => {
     const navigate = useNavigate();
     const { 
+      removeAllItems, 
       getTotalPrice
       ,items
       ,user
@@ -89,7 +90,7 @@ const CheckoutPage = () => {
             <CheckoutSummary subtotal={getTotalPrice} handleCheckout={handleFormSubmit} loading={loading} shipping={getShippingFee} VAT={getVAT} grandTotal={getGrandTotal} items={items} />
           </div>
         </ScreenCap>
-        {isVisible&&<CheckoutModal grandTotal={getGrandTotal} items={items} />}
+        {isVisible&&<CheckoutModal removeAllItems={removeAllItems} grandTotal={getGrandTotal} items={items} />}
       </div>
     );
   

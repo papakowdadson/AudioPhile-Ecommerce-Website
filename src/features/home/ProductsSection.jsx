@@ -6,7 +6,7 @@ import EarphonesImage from '../../assets/shared/desktop/image-category-thumbnail
 
 const ProductsSection = () => {
   return (
-    <div className='flex gap-8 flex-wrap'>
+    <div className='flex gap-8 max-sm:flex-col'>
         <Product image={HeadphonesImage} name={'HEADPHONES'} pathName={'SHOP'} path={'/products?category=headphones'} />
         <Product image={SpeakersImage} name={'SPEAKERS'} pathName={'SHOP'} path={'/products?category=speakers'} />
         <Product image={EarphonesImage} name={'EARPHONES'} pathName={'SHOP'} path={'/products?category=earphones'} />

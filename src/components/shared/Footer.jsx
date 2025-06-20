@@ -10,31 +10,29 @@ const Footer = () => {
   return (
     <div className='bg-secondary_black pb-8 relative max-lg:px-4'>
       <ScreenCap>
-        <div className='w-[101px] bg-primary_orange h-[4px] mb-12'>
-
+        <div className='w-[101px] bg-primary_orange h-[4px] mb-12 max-sm:mx-auto'>
         </div>
-        <div className='flex justify-between items-center mb-12 text-tertiary_white '>
+        <div className='flex justify-between items-center mb-12 text-tertiary_white max-sm:flex-col max-sm:gap-12'>
             <NavLink to={'/'}>
                   <img src={logo} alt='logo' className=''/>
             </NavLink>
-            <div className='flex gap-8'>
+            <div className='flex gap-8 max-sm:flex-col'>
               {NavBarData.map((item, index) => (
                 <NavLink 
                   to={item.path}
                   key={index}
                   className={() =>location.pathname + location.search + location.hash === item.path
-                  ?'text-primary_orange text-subtitle font-bold font-heading':'text-subtitle font-heading text-tertiary_white hover:text-primary_orange transition-colors duration-300 font-bold'}
+                  ?'text-primary_orange text-subtitle font-bold font-heading text-center':'text-subtitle font-heading text-tertiary_white hover:text-primary_orange transition-colors duration-300 font-bold text-center'}
                 >
                   {item.name.toLocaleUpperCase()}
                 </NavLink>
               ))}
 
-            </div>
-                  
+            </div>         
         </div>
-        <div className='flex justify-between gap-8 mb-12 items-baseline'>
+        <div className='flex justify-between gap-8 mb-12 items-baseline max-sm:flex-col max-sm:items-center'>
           <div>
-            <p className='text-tertiary_white font-medium text-body max-w-md opacity-50'>
+            <p className='text-tertiary_white font-medium text-body max-w-md opacity-50 max-sm:text-center'>
               Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.
             </p>
           </div>

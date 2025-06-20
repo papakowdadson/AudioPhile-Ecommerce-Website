@@ -14,7 +14,7 @@ const TrendingProductsSection = () => {
 
     return (
     <div className='space-y-12'>
-        <div className=' text-tertiary_white pt-16 px-16 bg-primary_orange rounded-lg bg-left bg-contain bg-no-repeat flex justify-between gap-8'
+        <div className=' text-tertiary_white pt-16 px-16 bg-primary_orange rounded-lg bg-left bg-contain bg-no-repeat flex justify-between gap-8 max-md:flex-col max-md:pb-16'
             style={{ backgroundImage: `url(${patternCircles})` }} >
             <img src={ZX9} className='h-96' alt='zx9Speaker'/>
             <div className='max-w-xs space-y-4 '>
@@ -40,7 +40,7 @@ const TrendingProductsSection = () => {
             </div>
 
         </div>
-        <div className='flex gap-8 h-72'>
+        <div className='flex gap-8 h-72 max-sm:flex-col'>
             <img src={YX1} alt='zx9Speaker' className='rounded-lg'/>
             <div className='bg-tertiary_grey p-16 rounded-lg flex-col flex  text-secondary_black space-y-4 w-full justify-center'>
                 <h1 className='text-h4'>

@@ -44,7 +44,6 @@ const ProductsDetailsPage = () => {
           <VisionSection/>
         </div>
       </ScreenCap>
-      {/* <Footer table={table} /> */}
     </div>
   );
 };
