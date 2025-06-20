@@ -30,6 +30,7 @@ module.exports = {
       'body': ['15px', { lineHeight: '25px' }],
       'overline': ['14px', { lineHeight: '1.5' }],
       'subtitle': ['13px', { lineHeight: '1.5' }],
+      'caption': ['12px', { lineHeight: '1.5' }],
     },
     fontWeight: {
       'h1': 'bold', 

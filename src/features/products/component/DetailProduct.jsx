@@ -47,7 +47,7 @@ const DetailProduct = ({product}) => {
             <p className='text-h6 font-bold'>{`$ ${product.price}`}</p>
             <div className='gap-4 flex'>
                 <CartCounterButton label={potentialPurchase.length} handleDecrement={handleDecrement} handleIncrement={handleIncrement} />
-                <PrimaryButton label={'ADD TO CART'} onClick={()=>handleAddToCartClick(product)} />
+                <PrimaryButton isFullWidth={false} label={'ADD TO CART'} onClick={()=>handleAddToCartClick(product)} />
             </div>
         </div>
       

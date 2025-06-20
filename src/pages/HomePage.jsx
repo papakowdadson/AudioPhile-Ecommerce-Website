@@ -12,7 +12,7 @@ const HomePage = () => {
     <div className="flex flex-col justify-between">
       <Banner/>
       <ScreenCap>
-        <div className="my-24 space-y-24">
+        <div className="my-24 space-y-24 max-lg:px-4">
           <ProductsSection/>
           <TrendingProductsSection/>
           <VisionSection/>

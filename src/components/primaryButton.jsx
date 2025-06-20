@@ -1,10 +1,10 @@
 import React from 'react'
 
-const PrimaryButton = ({onClick,label}) => {
+const PrimaryButton = ({onClick,label,isFullWidth}) => {
   return (
-    <div onClick={onClick} className='bg-primary_orange text-tertiary_white px-4 py-2 rounded-sm cursor-pointer hover:bg-primary_orange_hovered transition-colors duration-300 w-fit'>
+    <button type="button" onClick={onClick} className={`bg-primary_orange text-tertiary_white px-4 text-center py-2 rounded-sm cursor-pointer hover:bg-primary_orange_hovered transition-colors duration-300 ${isFullWidth?'w-full':'w-fit'}`}>
       {label.toUpperCase()}
-    </div>
+    </button>
   )
 }
 

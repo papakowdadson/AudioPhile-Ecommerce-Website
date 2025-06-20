@@ -19,7 +19,7 @@ const ProductsPage = () => {
         
         <ScreenCap>        
 
-          <div className="my-24 space-y-24"> 
+          <div className="my-24 space-y-24 max-lg:px-4"> 
             {(loading&&groupedProducts==null)? <p>Loading.....</p>:<CategoryProductsSection data={groupedProducts[category]}/>}
             <ProductsSection/>
             <VisionSection/>

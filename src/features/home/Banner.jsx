@@ -21,7 +21,7 @@ const Banner = () => {
                 <p className='text-body' >
                     Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
                 </p>
-                <PrimaryButton label={'See Products'} onClick={()=>handleSeeProduct('xx99-mark-two-headphones')} />
+                <PrimaryButton isFullWidth={false} label={'See Products'} onClick={()=>handleSeeProduct('xx99-mark-two-headphones')} />
 
             </div>
             <div className='flex-2'>

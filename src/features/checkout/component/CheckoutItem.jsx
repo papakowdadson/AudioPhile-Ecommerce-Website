@@ -2,15 +2,16 @@ import React from 'react'
 
 const CheckoutItem = ({item}) => {
   return (
-    <div className="mb-2">
-      <p className="font-semibold">Total GHS{item.amount}</p>
-      {item.products.map((product,index) => (
-        <div key={index} className="flex items-center mb-2">
-          <img src={product.productImageUrl} alt="Order" className="rounded-xl w-3/12 h-16 md:h-24" />
-          <p className="ml-1 mr-1 w-4/12">{product.productName}</p>
-          <p className={item.Status=='pending'?"ml-1 mr-1 w-1/12 text-red-500":"ml-1 mr-1 w-1/12 text-green-500"}>{item.Status}</p>
-        </div>
-      ))}
+    <div className="flex items-center gap-2">
+          <img src={item.image} alt="Order" className="rounded-lg w-16 h-16" />
+          <div className='flex flex-1 justify-between gap-2'>
+            <div className='space-y-2'>
+              <p className="text-body font-bold">{item.name.split(" ").slice(0, -1).join(" ")}</p>
+              <p className="text-secondary_black_50 text-body">{`$ ${item.price}`}</p>
+            </div>
+            <p className="text-secondary_black_50 text-body">{`x ${item.qty}`}</p>
+          </div>
+          
     </div>
   )
 }

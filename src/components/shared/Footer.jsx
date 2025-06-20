@@ -8,7 +8,7 @@ const Footer = () => {
     const location = useLocation()
   
   return (
-    <div className='bg-secondary_black pb-8 relative'>
+    <div className='bg-secondary_black pb-8 relative max-lg:px-4'>
       <ScreenCap>
         <div className='w-[101px] bg-primary_orange h-[4px] mb-12'>
 
@@ -34,14 +34,14 @@ const Footer = () => {
         </div>
         <div className='flex justify-between gap-8 mb-12 items-baseline'>
           <div>
-            <p className='text-tertiary_white font-medium text-body max-w-md'>
+            <p className='text-tertiary_white font-medium text-body max-w-md opacity-50'>
               Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.
             </p>
           </div>
           
           <SocailsSection/>
         </div>
-        <p className='text-tertiary_white font-medium text-body' >Copyright 2021. All Rights Reserved</p>
+        <p className='text-tertiary_white font-medium text-body opacity-50' >Copyright 2021. All Rights Reserved</p>
       </ScreenCap>
       
     </div>

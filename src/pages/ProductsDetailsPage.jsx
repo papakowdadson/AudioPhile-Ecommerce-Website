@@ -38,7 +38,7 @@ const ProductsDetailsPage = () => {
     <div className="flex flex-col justify-between">
 
       <ScreenCap>
-        <div className="my-24 space-y-24">
+        <div className="my-24 space-y-24 max-lg:px-4">
           {(loading)? <p>Loading.....</p>:product==null?<div>Product not found</div>:<ProductDetailsSection product={product} />}
           <ProductsSection/>
           <VisionSection/>

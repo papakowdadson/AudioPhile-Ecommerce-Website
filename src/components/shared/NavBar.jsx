@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <div className='bg-secondary_black text-white py-6'>
       <ScreenCap>
-        <div className='flex justify-between items-center mb-6 text-tertiary_white '>
+        <div className='flex justify-between items-center mb-6 text-tertiary_white max-lg:px-4 '>
           <NavLink to={'/'}>
               <img src={logo} alt='logo' className='' />
           </NavLink>

@@ -16,7 +16,7 @@ const RelatedProduct = ({product}) => {
         <h1 className='text-h5 font-bold' >
             {product.name}
         </h1>
-        <PrimaryButton label={'See Product'} onClick={()=>handleClick(product.slug)} />
+        <PrimaryButton isFullWidth={false} label={'See Product'} onClick={()=>handleClick(product.slug)} />
 
     </div>
   )

@@ -16,7 +16,7 @@ const CategoryProduct = ({product,index}) => {
             {product.new&&<p className='text-primary_orange'>New Product</p>}
             <h1 className='text-h1' >{product.name}</h1>
             <p className='text-body text-secondary_black_50 font-medium'>{product.description}</p>
-            <PrimaryButton label={'See Product'} onClick={()=>handleClick(product.slug)} />
+            <PrimaryButton isFullWidth={false} label={'See Product'} onClick={()=>handleClick(product.slug)} />
         </div>
       
     </div>

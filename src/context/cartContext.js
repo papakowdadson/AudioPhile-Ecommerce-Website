@@ -4,14 +4,14 @@ import { v4 as uuidv4 } from "uuid";
 export const CartContext = createContext();
 
 export function CartProvider(props) {
-  const [items, setItems] = useState([
-    
-  ]);
+  const [items, setItems] = useState([]);
+  const [loading,setLoading] = useState(true)
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const loggedUser = () => {
       const localUser = JSON.parse(localStorage.getItem("user"));
+      const localItems = JSON.parse(localStorage.getItem("items"));
       if (localUser) {
         console.log("=====local user====",localUser);
         setUser(localUser);
@@ -22,16 +22,29 @@ export function CartProvider(props) {
         localStorage.setItem("user",JSON.stringify(_user));
         setUser({ 'userId': userId });
       }
+      if (localItems) {
+        console.log("=====local items====",localItems);
+        setItems(localItems);
+        console.log("=====items====",items);
+
+      } else {
+        setItems([]);
+      }
+      setLoading(false)
     };
     loggedUser();
   }, []);
+
+  const updateLocalItem = (items) =>{
+      localStorage.setItem("items",JSON.stringify(items));
+  }
 
   function addItemToCart(_id, product) {
     console.log("====adding Item===");
     setItems((prevItems) => {
       const item = prevItems.find((item) => item._id === _id);
       if (!item) {
-        return [
+        const newItems = [
           ...prevItems,
           {
             _id,
@@ -43,8 +56,10 @@ export function CartProvider(props) {
             slug:product.slug
           },
         ];
+        updateLocalItem(newItems)
+        return newItems
       } else {
-        return prevItems.map((item) => {
+        const newItems = prevItems.map((item) => {
           if (item._id === _id) {
             return {
               ...item,
@@ -55,6 +70,8 @@ export function CartProvider(props) {
           }
           return item;
         });
+        updateLocalItem(newItems);
+        return newItems;
       }
     });
   }
@@ -79,6 +96,11 @@ export function CartProvider(props) {
     });
   };
 
+  const removeAllItems =()=>{
+    setItems([])
+    updateLocalItem([])
+  }
+
   // Function to get the total number of items in the cart
   const getItemsCount = () => {
     let itemcount = items.reduce((sum, item) => sum + item.qty, 0);
@@ -93,6 +115,23 @@ export function CartProvider(props) {
     return itemTotal;
   };
 
+  
+  const getShippingFee = ()=>{
+    const fee = 50;
+    return fee;
+  }
+
+  const getVAT =()=>{
+    const subtotal = getTotalPrice()
+    const VAT = 0.2*subtotal;
+    return VAT;
+  }
+
+  const getGrandTotal = ()=>{
+    const grandTotal = getTotalPrice() + getShippingFee() + getVAT()
+    return grandTotal
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -100,9 +139,14 @@ export function CartProvider(props) {
         setItems,
         getItemsCount,
         addItemToCart,
-        getTotalPrice,
         removeItem,
+        removeAllItems,
+        getTotalPrice,
+        getShippingFee,
+        getVAT,
+        getGrandTotal,
         user,
+        loading
       }}
     >
       {props.children}
