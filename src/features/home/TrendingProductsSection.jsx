@@ -14,12 +14,15 @@ const TrendingProductsSection = () => {
 
     return (
     <div className='space-y-12'>
-        <div className=' text-tertiary_white pt-16 px-16 bg-primary_orange rounded-lg bg-left bg-contain bg-no-repeat flex justify-between gap-8 max-md:flex-col max-md:pb-16'
+        <div className=' text-tertiary_white pt-16 px-16 bg-primary_orange rounded-lg bg-left bg-contain max-md:bg-center bg-no-repeat flex justify-between gap-8 max-md:flex-col max-md:items-center max-md:pb-16'
             style={{ backgroundImage: `url(${patternCircles})` }} >
-            <img src={ZX9} className='h-96' alt='zx9Speaker'/>
-            <div className='max-w-xs space-y-4 '>
+            <img src={ZX9} className='h-96 max-md:w-64 max-md:h-64' alt='zx9Speaker'/>
+            <div className='max-w-xs space-y-4 max-md:flex-col max-md:text-center max-md:items-center max-md:flex max-md:max-w-full'>
                 <h1 className='text-h1' >
-                    ZX9 SPEAKER
+                    <span>ZX9 </span>
+                    <br/>
+                    <span>SPEAKER</span>
+                    
                 </h1>
                 <p>
                     Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
@@ -40,14 +43,13 @@ const TrendingProductsSection = () => {
             </div>
 
         </div>
-        <div className='flex gap-8 h-72 max-sm:flex-col'>
-            <img src={YX1} alt='zx9Speaker' className='rounded-lg'/>
+        <div className='flex gap-8 h-72 max-md:h-fit max-md:flex-col'>
+            <img src={YX1} alt='zx9Speaker' className='rounded-lg max-md:w-full'/>
             <div className='bg-tertiary_grey p-16 rounded-lg flex-col flex  text-secondary_black space-y-4 w-full justify-center'>
                 <h1 className='text-h4'>
                     YX1 EARPHONES
                 </h1>
                 <SecondaryButton label={"See Product"} onClick={()=>handleSeeProduct("yx1-earphones")}/>
-
             </div>
 
         </div>

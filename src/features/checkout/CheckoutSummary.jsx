@@ -4,7 +4,7 @@ import PrimaryButton from "../../components/primaryButton";
 import CheckoutItem from "./component/CheckoutItem";
 import {formatMoney} from "../../utils/formatMoney"
 
-export const CheckoutSummary = ({handleCheckout,items,subtotal,shipping,VAT,grandTotal,loading}) => {
+export const CheckoutSummary = ({handleIsFormValid,handleCheckout,items,subtotal,shipping,VAT,grandTotal,loading}) => {
 
   return (
     <div className="bg-white rounded-lg p-6 space-y-6 h-fit min-w-[350px]">
@@ -33,11 +33,11 @@ export const CheckoutSummary = ({handleCheckout,items,subtotal,shipping,VAT,gran
                 </div>
                 <div className="flex justify-between" >
                     <p className="font-medium text-body text-secondary_black_50">GRAND TOTAL</p>
-                    <p className="font-bold text-h6">{`${formatMoney(grandTotal())}`}</p>
+                    <p className="font-bold text-h6 text-primary_orange">{`${formatMoney(grandTotal())}`}</p>
                 </div>
               </div>
               
-              <PrimaryButton isFullWidth={true} label={"Continue & Pay"} onClick={loading?null:handleCheckout} />
+              <PrimaryButton isFullWidth={true} label={"Continue & Pay"} onClick={(!loading&&handleIsFormValid())?handleCheckout:null} />
             </div>
   );
 };

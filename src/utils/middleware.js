@@ -11,6 +11,14 @@ import {
 
 const NUMS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+export const isNameValid = (name)=>{
+    if(name.length>0){
+        return [true,""]
+    }
+    else{
+        return [false,"Name is required"]
+    }
+}
 export const isEmailValid = (email) => {
     if (email.length > 0) {
         const validEmail = EMAIL_REG_EXP.test(email); // /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
@@ -25,7 +33,6 @@ export const isEmailValid = (email) => {
         return [false, "Invalid email address"];
     }
 };
-
 export function isContactValid(phoneNumber) {
     let digits;
     if (phoneNumber.charAt(0) === "+") {
@@ -45,31 +52,61 @@ export function isContactValid(phoneNumber) {
     }
     return [true, ""]
 };
+export const isAddressValid = (address)=>{
+    if(address.length>0){
+        return [true,""]
+    }
+    else{
+        return [false,"Address is required"]
+    }
+}
+export const isZipCodeValid = (zipcode) =>{
+    if(zipcode.length>0){
+        return [true,""]
+    }
+    else{
+        return [false,"Zipcode is required"]
+    }
+}
+export const isCityValid = (city) =>{
+    if(city.length>0){
+        return [true,""]
+    }
+    else{
+        return [false,"City is required"]
+    }
+}
+export const isCountryValid = (country) =>{
+    if(country.length>0){
+        return [true,""]
+    }
+    else{
+        return [false,"Country is required"]
+    }
+}
+export const isPaymentMethodValid = (method) =>{
+    const supportedMethod =["e-Money","Cash on Delivery"]
+    if(supportedMethod.includes(method)){
+        return [true,""]
+    }
+    else{
+        return [false,"Select a payment method"]
+    }
+}
 
-
-export const isPasswordValid = (passwordInputValue) => {
-    const minLengthRegExp   = /.{8,}/;
-
-    const passwordLength       =  passwordInputValue.length;
-    const uppercasePassword    =  UPPER_CASE_REG_EXP.test(passwordInputValue);  //  /(?=.*?[A-Z])/
-    const lowercasePassword    =  LOWER_CASE_REG_EXP.test(passwordInputValue);  //  /(?=.*?[a-z])/
-    const digitsPassword       =  DIGITS_REG_EXP.test(passwordInputValue);      //  /(?=.*?[0-9])/
-    const specialCharPassword  =  SPECIAL_CHAR_REG_EXP.test(passwordInputValue); //  /(?=.*?[#?!@$%^&*-])/
-    const minLengthPassword    =  minLengthRegExp.test(passwordInputValue);
+export const isEmoneyPINValid = (pin) => {
+    const minLengthRegExp   = /.{4,}/;
+    const pinLength       =  pin.length;
+    const specialCharPassword  =  SPECIAL_CHAR_REG_EXP.test(pin); //  /(?=.*?[#?!@$%^&*-])/
+    const minLengthPassword    =  minLengthRegExp.test(pin);
 
     let errMsg = "";
-    if(passwordLength===0){
-            errMsg="Password is empty";
-    }else if(!uppercasePassword){
-            errMsg="At least one uppercase";
-    }else if(!lowercasePassword){
-            errMsg="At least one lowercase";
-    }else if(!digitsPassword){
-            errMsg="At least one digit";
-    }else if(!specialCharPassword){
-            errMsg="At least one special character";
+    if(pinLength===0){
+            errMsg="pin is empty";
+    }else if(specialCharPassword){
+            errMsg="Pin can't be a special character";
     }else if(!minLengthPassword){
-            errMsg="Minumum of 8 characters";
+            errMsg="Minumum of 4 characters";
     }else{
         errMsg="";
     }
@@ -82,19 +119,4 @@ export const isPasswordValid = (passwordInputValue) => {
     }
 }
 
-
-export const isConfirmPassword= (newPassword, confirmPassword)=>{
-    if(newPassword.length>0 && confirmPassword.length>0){
-       if(newPassword !== confirmPassword)
-    {
-        let errMsg="Password not matching";
-        
-        return false;
-    }
-    else{
-        return true;
-    } 
-    }
-    
-}
 

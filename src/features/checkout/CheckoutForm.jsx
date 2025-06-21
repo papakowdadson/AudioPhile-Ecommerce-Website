@@ -3,7 +3,7 @@ import InputTextArea from '../../components/shared/InputTextArea'
 import InputRadioTextArea from '../../components/shared/InputRadioTextArea'
 import cashDeliveryIcon from "../../assets/checkout/icon-cash-on-delivery.svg"
 
-const CheckoutForm = ({formData,handleFormData}) => {
+const CheckoutForm = ({formDataError,formData,handleFormData}) => {
   const {
       name,
       email,
@@ -15,6 +15,18 @@ const CheckoutForm = ({formData,handleFormData}) => {
       paymentMethod,
       emoneyNumber,
       emoneyPIN} = formData
+  const {
+      nameError,
+      emailError,
+      contactError,
+      addressError,
+      zipcodeError,
+      cityError,
+      countryError,
+      paymentMethodError,
+      emoneyNumberError,
+      emoneyPINError
+  } = formDataError
   return (
     <div className="bg-white rounded-lg flex-1 p-8 space-y-10">
               <p className="font-bold mb-2 text-secondary_black text-h3">CHECKOUT</p>
@@ -22,18 +34,18 @@ const CheckoutForm = ({formData,handleFormData}) => {
                 <div className='space-y-4'>
                   <p className='text-primary_orange text-subtitle font-bold'>BILLING DETAILS</p>
                   <div className='flex gap-4 flex-wrap'>
-                    <InputTextArea placeholder={'Papa Kow Dadson'} id={"name"} field={name} onChange={handleFormData} label={"Name"} />
-                    <InputTextArea placeholder={'PapaKowDadson@gmail.com'} id={"email"} field={email} onChange={handleFormData} label={"Email Address"}  />
-                    <InputTextArea placeholder={'+233200032276'} id={"contact"} field={contact} onChange={handleFormData} label={"Phone Number"}   />
+                    <InputTextArea placeholder={'Papa Kow Dadson'} id={"name"} hasError={nameError.length>0} errorMessage={nameError} field={name} onChange={handleFormData} label={"Name"} />
+                    <InputTextArea placeholder={'PapaKowDadson@gmail.com'} id={"email"} hasError={emailError.lenght>0} errorMessage={emailError} field={email} onChange={handleFormData} label={"Email Address"}  />
+                    <InputTextArea placeholder={'+233200032276'} id={"contact"} hasError={contactError.lenght>0} errorMessage={contactError} field={contact} onChange={handleFormData} label={"Phone Number"}   />
                   </div>
                 </div>
                 <div className='space-y-4'>
                   <p className='text-primary_orange text-subtitle font-bold'>SHIPPING INFO</p>
-                  <InputTextArea placeholder={'1137 Williams Avenue'} id={"address"} field={address} onChange={handleFormData} label={"Address"} />
+                  <InputTextArea placeholder={'1137 Williams Avenue'} id={"address"} hasError={addressError.length>0} errorMessage={addressError} field={address} onChange={handleFormData} label={"Address"} />
                   <div className='flex gap-4 flex-wrap'>
-                    <InputTextArea placeholder={'1137'} id={"zipcode"} field={zipcode} onChange={handleFormData} label={"ZIP Code"} />
-                    <InputTextArea placeholder={'Accra'} id={"city"} field={city} onChange={handleFormData} label={"City"} />
-                    <InputTextArea placeholder={'Ghana'} id={"country"} field={country} onChange={handleFormData} label={"Country"} />
+                    <InputTextArea placeholder={'1137'} id={"zipcode"} hasError={zipcodeError.length>0} errorMessage={zipcodeError} field={zipcode} onChange={handleFormData} label={"ZIP Code"} />
+                    <InputTextArea placeholder={'Accra'} id={"city"} hasError={cityError.lenght>0} errorMessage={cityError} field={city} onChange={handleFormData} label={"City"} />
+                    <InputTextArea placeholder={'Ghana'} id={"country"} hasError={countryError.lenght>0} errorMessage={countryError} field={country} onChange={handleFormData} label={"Country"} />
                   </div>
                 </div>
                 <div className='space-y-4'>
@@ -41,15 +53,16 @@ const CheckoutForm = ({formData,handleFormData}) => {
                   <div className='flex gap-8 justify-between'>
                     <p className='text-caption font-bold'>Payment Method</p>
                     <div className='space-y-4'>
-                      <InputRadioTextArea placeholder={"e-Money"} id={"paymentMethod"} field={paymentMethod} onChange={handleFormData} checkedValue={"e-Money"}/>
-                      <InputRadioTextArea placeholder={"Cash on Delivery"} id={"paymentMethod"} field={paymentMethod} onChange={handleFormData} checkedValue={"Cash on Delivery"} />
+                    {paymentMethodError.length>0&& <p className='text-caption font-bold text-red-500' >{paymentMethodError}</p> }
+                      <InputRadioTextArea name={"paymentMethod"} placeholder={"e-Money"} id={"paymentMethod"} field={paymentMethod} onChange={handleFormData} checkedValue={"e-Money"}/>
+                      <InputRadioTextArea name={"paymentMethod"} placeholder={"Cash on Delivery"} id={"paymentMethod"} field={paymentMethod} onChange={handleFormData} checkedValue={"Cash on Delivery"} />
                     </div>
                     
                   </div>
                   {paymentMethod=="e-Money"?
                     <div className='flex gap-4'>
-                      <InputTextArea placeholder={'233200032276'} id={"emoneyNumber"} field={emoneyNumber} onChange={handleFormData} label={"e-Money Number"}/>
-                      <InputTextArea placeholder={'6912'} id={"emoneyPIN"} field={emoneyPIN} onChange={handleFormData} label={"e-Money PIN"}/>
+                      <InputTextArea hasError={emoneyNumberError.length>0} errorMessage={emoneyNumberError} placeholder={'233200032276'} id={"emoneyNumber"} field={emoneyNumber} onChange={handleFormData} label={"e-Money Number"}/>
+                      <InputTextArea hasError={emoneyPINError.length>0} errorMessage={emoneyPINError} placeholder={'6912'} id={"emoneyPIN"} field={emoneyPIN} onChange={handleFormData} label={"e-Money PIN"}/>
                     </div>:
                     <div className='flex gap-4 items-center'>
                       <img src={cashDeliveryIcon} alt='cash icon'/>

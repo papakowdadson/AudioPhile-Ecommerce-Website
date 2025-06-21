@@ -12,7 +12,7 @@ const CategoryProduct = ({product,index}) => {
         <div className='bg-tertiary_grey rounded-lg p-8 w-[480px] max-md:w-full'>
             <img src={`${product.image.desktop}`} alt={product.name}/>
         </div>
-        <div className='space-y-6 max-w-[445px] max-md:max-w-full max-md:flex max-md:flex-col max-md:items-center' >
+        <div className='space-y-6 max-w-[445px] max-md:max-w-full max-md:flex max-md:flex-col max-md:items-center max-md:text-center' >
             {product.new&&<p className='text-primary_orange'>New Product</p>}
             <h1 className='text-h1 max-sm:text-h4' >
               <span>{product.name.split(' ').slice(0,-1).join(" ")}</span>

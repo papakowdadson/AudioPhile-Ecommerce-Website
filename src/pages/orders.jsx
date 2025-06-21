@@ -46,7 +46,7 @@ function OrdersPage() {
     return <p className="m-8 text-center">Loading........</p>;
   } else {
     return (
-      <div className="p-4 flex flex-col h-svh">
+      <div className="p-4 flex flex-col h-full pt-[96px]">
         <div>
           <p className="text-left font-semibold mb-6 text-2xl">
             My <span className="text-rose-500">Orders</span>

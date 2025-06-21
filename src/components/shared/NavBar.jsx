@@ -6,25 +6,41 @@ import logo from '../../assets/shared/desktop/logo.svg'
 import cartIcon from '../../assets/shared/desktop/icon-cart.svg'
 import { CartContext } from '../../context/cartContext'
 import CartModal from '../../features/cart/CartModal'
+import hamburgerIcon from '../../assets/shared/tablet/icon-hamburger.svg'
+import MenuModal from './MenuModal'
 
 const NavBar = () => {
   const location = useLocation()
   const cartContext = useContext(CartContext)
   const { getItemsCount } = cartContext
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isDrawed,setIsDrawed] = useState(false)
   const handleCartClick=()=>{
-    setIsCartOpen(!isCartOpen)
+    isDrawed&&handleDrawer()
+    setIsCartOpen((prev)=>!prev)
+  }
+  const handleDrawer = ()=>{
+    console.log('=====hnaling drawer=======')
+    console.log(isDrawed)
+      isCartOpen&&handleCartClick()
+      setIsDrawed((prev)=>!prev)
   }
 
 
   return (
-    <div className='bg-secondary_black text-white py-6'>
+    <div className='bg-secondary_black text-white py-6 fixed w-full z-10'>
       <ScreenCap>
-        <div className='flex justify-between items-center mb-6 text-tertiary_white max-lg:px-4 '>
-          <NavLink to={'/'}>
+        <div className='flex gap-4 max-sm:justify-between max-md:justify-normal justify-between items-center mb-6 text-tertiary_white max-lg:px-4 '>
+          <div className='hidden max-md:block' onClick={handleDrawer}>
+              <img src={hamburgerIcon} alt='humburger' />
+          </div>
+          {/* <div className='mr-auto'> */}
+            <NavLink to={'/'} className='max-sm:m-auto max-md:mr-auto'>
               <img src={logo} alt='logo' className='' />
           </NavLink>
-          <div className='flex gap-8'>
+          {/* </div> */}
+          
+          <div className='flex gap-8 max-md:hidden'>
             {NavBarData.map((item, index) => (
               <NavLink 
                 to={item.path}
@@ -48,9 +64,10 @@ const NavBar = () => {
           </div>
                   
         </div>
-        <hr className='border-tertiary_grey_outline' />
+        <hr className=' bg-tertiary_grey_outline ' />
       </ScreenCap>
       {isCartOpen && <CartModal onClick={handleCartClick} />}
+      {isDrawed&&<MenuModal handleCloseModal={handleDrawer}/>}
     </div>
    
   )
