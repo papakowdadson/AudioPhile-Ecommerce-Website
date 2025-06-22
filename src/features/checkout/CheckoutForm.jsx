@@ -1,4 +1,3 @@
-import React from 'react'
 import InputTextArea from '../../components/shared/InputTextArea'
 import InputRadioTextArea from '../../components/shared/InputRadioTextArea'
 import cashDeliveryIcon from "../../assets/checkout/icon-cash-on-delivery.svg"
@@ -27,30 +26,33 @@ const CheckoutForm = ({formDataError,formData,handleFormData}) => {
       emoneyNumberError,
       emoneyPINError
   } = formDataError
+      
+  console.log("country error in form",countryError)
+
   return (
     <div className="bg-white rounded-lg flex-1 p-8 space-y-10">
               <p className="font-bold mb-2 text-secondary_black text-h3">CHECKOUT</p>
               <form className='space-y-10'>
                 <div className='space-y-4'>
                   <p className='text-primary_orange text-subtitle font-bold'>BILLING DETAILS</p>
-                  <div className='flex gap-4 flex-wrap'>
+                  <div className=' gap-4 flex-wrap justify-between grid grid-cols-2 max-sm:grid-cols-1 '>
                     <InputTextArea placeholder={'Papa Kow Dadson'} name={"name"} id={"name"} hasError={nameError.length>0} errorMessage={nameError} field={name} onChange={handleFormData} label={"Name"} />
-                    <InputTextArea placeholder={'PapaKowDadson@gmail.com'} name={"email"} id={"email"} hasError={emailError.lenght>0} errorMessage={emailError} field={email} onChange={handleFormData} label={"Email Address"}  />
-                    <InputTextArea placeholder={'+233200032276'} name={"contact"} id={"contact"} hasError={contactError.lenght>0} errorMessage={contactError} field={contact} onChange={handleFormData} label={"Phone Number"}   />
+                    <InputTextArea placeholder={'PapaKowDadson@gmail.com'} name={"email"} id={"email"} hasError={emailError.length>0} errorMessage={emailError} field={email} onChange={handleFormData} label={"Email Address"}  />
+                    <InputTextArea placeholder={'+233200032276'} name={"contact"} id={"contact"} hasError={contactError.length>0} errorMessage={contactError} field={contact} onChange={handleFormData} label={"Phone Number"}   />
                   </div>
                 </div>
                 <div className='space-y-4'>
                   <p className='text-primary_orange text-subtitle font-bold'>SHIPPING INFO</p>
                   <InputTextArea placeholder={'1137 Williams Avenue'} name={"address"} id={"address"} hasError={addressError.length>0} errorMessage={addressError} field={address} onChange={handleFormData} label={"Address"} />
-                  <div className='flex gap-4 flex-wrap'>
+                  <div className=' gap-4 grid grid-cols-2 max-sm:grid-cols-1'>
                     <InputTextArea placeholder={'1137'} name={"zipcode"} id={"zipcode"} hasError={zipcodeError.length>0} errorMessage={zipcodeError} field={zipcode} onChange={handleFormData} label={"ZIP Code"} />
-                    <InputTextArea placeholder={'Accra'} name={"city"} id={"city"} hasError={cityError.lenght>0} errorMessage={cityError} field={city} onChange={handleFormData} label={"City"} />
-                    <InputTextArea placeholder={'Ghana'} name={"country"} id={"country"} hasError={countryError.lenght>0} errorMessage={countryError} field={country} onChange={handleFormData} label={"Country"} />
+                    <InputTextArea placeholder={'Accra'} name={"city"} id={"city"} hasError={cityError.length>0} errorMessage={cityError} field={city} onChange={handleFormData} label={"City"} />
+                    <InputTextArea hasError={countryError.length>0} placeholder={'Ghana'} name={"country"} id={"country"}  errorMessage={countryError} field={country} onChange={handleFormData} label={"Country"} />
                   </div>
                 </div>
                 <div className='space-y-4'>
                   <p className='text-primary_orange text-subtitle font-bold'>PAYMENT DETAILS</p>
-                  <div className='flex gap-8 justify-between'>
+                  <div className='gap-8 grid grid-cols-2 max-sm:grid-cols-1'>
                     <p className='text-caption font-bold'>Payment Method</p>
                     <div className='space-y-4'>
                     {paymentMethodError.length>0&& <p className='text-caption font-bold text-red-500' >{paymentMethodError}</p> }
@@ -60,7 +62,7 @@ const CheckoutForm = ({formDataError,formData,handleFormData}) => {
                     
                   </div>
                   {paymentMethod=="e-Money"?
-                    <div className='flex gap-4'>
+                    <div className='gap-4 grid grid-cols-2 max-sm:grid-cols-1'>
                       <InputTextArea hasError={emoneyNumberError.length>0} errorMessage={emoneyNumberError} placeholder={'233200032276'} id={"emoneyNumber"} name={"emoneyNumber"} field={emoneyNumber} onChange={handleFormData} label={"e-Money Number"}/>
                       <InputTextArea hasError={emoneyPINError.length>0} errorMessage={emoneyPINError} placeholder={'6912'} id={"emoneyPIN"} name={"emoneyPIN"} field={emoneyPIN} onChange={handleFormData} label={"e-Money PIN"}/>
                     </div>:

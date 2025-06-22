@@ -84,7 +84,9 @@ const CheckoutPage = () => {
           setFormDataError((prev)=>({...prev,[key]:cityRes[1]}))
           break;
         case "countryError":
+          console.log("===validation country===")
           let countryRes = isCountryValid(value)
+          console.log("country res",countryRes)
           setFormDataError((prev)=>({...prev,[key]:countryRes[1]}))
           break;
         case "paymentMethodError":
@@ -224,7 +226,7 @@ const CheckoutPage = () => {
     return (
       <div className="bg-tertiary_grey w-full pt-[73px]">
         <ScreenCap>
-          <div className="flex gap-4 max-lg:flex-col max-lg:px-4 py-12" >
+          <div className="flex gap-4 max-md:flex-col max-lg:px-4 py-12" >
             <CheckoutForm formDataError={formDataError} handleFormData={handleFormData} formData={formData} />
             <CheckoutSummary subtotal={getTotalPrice} handleCheckout={handleFormSubmit} loading={loading} shipping={getShippingFee} VAT={getVAT} grandTotal={getGrandTotal} items={items} />
           </div>

@@ -35,6 +35,10 @@ export const isEmailValid = (email) => {
 };
 export function isContactValid(phoneNumber) {
     let digits;
+    let msg= ""
+    if(phoneNumber.length<1){
+        msg = "Contact can't be empty"
+    }
     if (phoneNumber.charAt(0) === "+") {
         digits = phoneNumber.slice(1,-1);
     }
@@ -47,10 +51,11 @@ export function isContactValid(phoneNumber) {
             continue;
         }
         else {
-            return [false, "Invalid contact"]
+            msg = "Invalid contact"
         }
     }
-    return [true, ""]
+
+    return msg.length>0?[false,msg]:[true, ""]
 };
 export const isAddressValid = (address)=>{
     if(address.length>0){
@@ -69,19 +74,21 @@ export const isZipCodeValid = (zipcode) =>{
     }
 }
 export const isCityValid = (city) =>{
-    if(city.length>0){
-        return [true,""]
-    }
-    else{
+    if(!city.length>0){
         return [false,"City is required"]
+    }
+    else{ 
+        return [true,""]
     }
 }
 export const isCountryValid = (country) =>{
-    if(country.length>0){
-        return [true,""]
+    console.log(country)
+    console.log(country.length)
+    if(country.length<1){
+        return [false,"Country is required"]
     }
     else{
-        return [false,"Country is required"]
+        return [true,""]
     }
 }
 export const isPaymentMethodValid = (method) =>{
@@ -99,14 +106,17 @@ export const isEmoneyPINValid = (pin) => {
     const pinLength       =  pin.length;
     const specialCharPassword  =  SPECIAL_CHAR_REG_EXP.test(pin); //  /(?=.*?[#?!@$%^&*-])/
     const minLengthPassword    =  minLengthRegExp.test(pin);
+    const onlyDigits = DIGITS_REG_EXP.test(pin)
 
     let errMsg = "";
     if(pinLength===0){
-            errMsg="pin is empty";
+            errMsg="Pin is empty";
     }else if(specialCharPassword){
             errMsg="Pin can't be a special character";
     }else if(!minLengthPassword){
             errMsg="Minumum of 4 characters";
+    }else if(!onlyDigits){
+            errMsg="Must be only numbers";
     }else{
         errMsg="";
     }
