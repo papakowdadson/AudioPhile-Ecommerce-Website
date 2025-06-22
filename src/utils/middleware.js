@@ -2,11 +2,7 @@
 import {
     DIGITS_REG_EXP,
     EMAIL_REG_EXP,
-    LOWER_CASE_REG_EXP,
-    PHONE_VALIDATION_API_URL,
-    PHONE_VALIDATION_API_KEY,
     SPECIAL_CHAR_REG_EXP,
-    UPPER_CASE_REG_EXP
  } from "./constants";
 
 const NUMS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -21,7 +17,7 @@ export const isNameValid = (name)=>{
 }
 export const isEmailValid = (email) => {
     if (email.length > 0) {
-        const validEmail = EMAIL_REG_EXP.test(email); // /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+        const validEmail = EMAIL_REG_EXP.test(email); 
         if (validEmail) {
             return [true, ""];
         }
@@ -82,8 +78,6 @@ export const isCityValid = (city) =>{
     }
 }
 export const isCountryValid = (country) =>{
-    console.log(country)
-    console.log(country.length)
     if(country.length<1){
         return [false,"Country is required"]
     }

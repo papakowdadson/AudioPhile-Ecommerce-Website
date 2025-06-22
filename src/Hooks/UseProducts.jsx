@@ -1,4 +1,6 @@
 import { useState,useEffect } from "react";
+import { CustomLogger } from "../utils/customLogger";
+
 const UseProducts = () => {
     const [products, setProducts] = useState([]);
     const [groupedProducts,setGroupedProducts] = useState(null)
@@ -8,19 +10,17 @@ const UseProducts = () => {
     useEffect(() => {
         (async () => {
             try {
-                await new Promise(resolve => setTimeout(resolve, 3000));
+                await new Promise(resolve => setTimeout(resolve, 2000));
 
                 const response = await fetch('/data/data.json');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
-                console.log('======products===')
-                console.log(data)
+                CustomLogger('======products===',data)
                 groupProduct(data)
                 setProducts(data);  
 
             } catch (error) {
-                console.log("error occured in useProducts")
-                console.log(error)
+                CustomLogger("error occured in useProducts",error)
                 // TODO: Implement custom toaster
 
             } finally {
@@ -31,15 +31,15 @@ const UseProducts = () => {
 
     const groupProduct = (products)=>{
         const data = {}
-        products.map((product)=>{
+        
+        products.forEach((product)=>{
             if(data[product.category]){
                 data[product.category].push(product)
             }else{
                 data[product.category]=[product]
             }
         })
-        console.log('=======grouped data======')
-        console.log(data['headphones'])
+        CustomLogger('=======grouped data headphones======',data['headphones'])
         setGroupedProducts(data)
         return data
 
@@ -51,16 +51,14 @@ const UseProducts = () => {
     }
 
     const findProduct =(slug)=>{
-        console.log('====find product slug====')
-        console.log(slug)
-        console.log(products)
+        CustomLogger('====find product slug====',slug)
         const data = products.find((product)=>product.slug===slug)
         return data
     }
 
 
 
-    return {filterData,groupProduct,groupedProducts, products,groupedProducts, loading, error,findProduct };
+    return {filterData,groupProduct, products,groupedProducts, loading, error,findProduct };
 }
 
 export default UseProducts;

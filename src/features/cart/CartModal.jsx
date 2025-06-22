@@ -5,14 +5,14 @@ import PrimaryButton from '../../components/primaryButton'
 import { useNavigate } from 'react-router-dom'
 import CartItem from './components/CartItem'
 
-const CartModal = ({onClick}) => {
+const CartModal = ({handleShowCartModal}) => {
     const cartContext = useContext(CartContext)
     const {items,getItemsCount,addItemToCart,getTotalPrice,removeItem,removeAllItems} = cartContext
     const navigate = useNavigate()
 
     const HandleNavigateToCheckout = ()=>{
         if(getItemsCount()>0){
-            onClick()
+            handleShowCartModal()
             navigate('/checkout')
         }
       
@@ -20,7 +20,7 @@ const CartModal = ({onClick}) => {
     }
 
     return (
-    <div className='fixed top-[0px] w-full h-full bg-black bg-opacity-50 flex items-start justify-center z-50' onClick={onClick} >
+    <div className='fixed top-[0px] w-full h-full bg-black bg-opacity-50 flex items-start justify-center z-50' onClick={handleShowCartModal} >
         <ScreenCap> 
             <div className='flex justify-end place-items-end pt-[73px] md:min-w-[768px] lg:min-w-[1024px] max-lg:px-4'>
                 <div className='bg-white p-6 rounded-lg shadow-lg w-96 space-y-4' onClick={e => e.stopPropagation()}>

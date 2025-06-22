@@ -27,8 +27,6 @@ const CheckoutForm = ({formDataError,formData,handleFormData}) => {
       emoneyPINError
   } = formDataError
       
-  console.log("country error in form",countryError)
-
   return (
     <div className="bg-white rounded-lg flex-1 p-8 space-y-10">
               <p className="font-bold mb-2 text-secondary_black text-h3">CHECKOUT</p>

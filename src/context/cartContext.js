@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { CustomLogger } from "../utils/customLogger";
 
 export const CartContext = createContext();
 
@@ -13,19 +14,19 @@ export function CartProvider(props) {
       const localUser = JSON.parse(localStorage.getItem("user"));
       const localItems = JSON.parse(localStorage.getItem("items"));
       if (localUser) {
-        console.log("=====local user====",localUser);
+        CustomLogger("=====local user====",localUser);
         setUser(localUser);
       } else {
         const userId = uuidv4();
-        console.log("=====userId======",userId);
+        CustomLogger("=====userId======",userId);
         const _user = { 'userId': userId };
         localStorage.setItem("user",JSON.stringify(_user));
         setUser({ 'userId': userId });
       }
       if (localItems) {
-        console.log("=====local items====",localItems);
+        CustomLogger("=====local items====",localItems);
         setItems(localItems);
-        console.log("=====items====",items);
+        CustomLogger("=====items====",items);
 
       } else {
         setItems([]);
@@ -40,7 +41,7 @@ export function CartProvider(props) {
   }
 
   function addItemToCart(id, product) {
-    console.log("====adding Item===");
+    CustomLogger("====adding Item===",product);
     setItems((prevItems) => {
       const item = prevItems.find((item) => item.id === id);
       if (!item) {
@@ -104,14 +105,14 @@ export function CartProvider(props) {
   // Function to get the total number of items in the cart
   const getItemsCount = () => {
     let itemcount = items.reduce((sum, item) => sum + item.qty, 0);
-    console.log("Total items", itemcount);
+    CustomLogger("Total items", itemcount);
     return itemcount;
   };
 
   // Function to get the total price of items in the cart
   const getTotalPrice = () => {
     let itemTotal = items.reduce((sum, item) => sum + item.totalPrice, 0);
-    console.log("Item total", itemTotal);
+    CustomLogger("Item total price", itemTotal);
     return itemTotal;
   };
 

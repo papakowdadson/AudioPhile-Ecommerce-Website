@@ -8,6 +8,7 @@ import { CartContext } from '../../context/cartContext'
 import CartModal from '../../features/cart/CartModal'
 import hamburgerIcon from '../../assets/shared/tablet/icon-hamburger.svg'
 import MenuModal from './MenuModal'
+import { CustomLogger } from '../../utils/customLogger'
 
 const NavBar = () => {
   const location = useLocation()
@@ -15,14 +16,13 @@ const NavBar = () => {
   const { getItemsCount } = cartContext
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isDrawed,setIsDrawed] = useState(false)
-  const handleCartClick=()=>{
+  const handleShowCartModal=()=>{
     isDrawed&&handleDrawer()
     setIsCartOpen((prev)=>!prev)
   }
   const handleDrawer = ()=>{
-    console.log('=====hnaling drawer=======')
-    console.log(isDrawed)
-      isCartOpen&&handleCartClick()
+      CustomLogger('=====handling drawer=======',isDrawed)
+      isCartOpen&&handleShowCartModal()
       setIsDrawed((prev)=>!prev)
   }
 
@@ -34,11 +34,9 @@ const NavBar = () => {
           <div className='hidden max-md:block' onClick={handleDrawer}>
               <img src={hamburgerIcon} alt='humburger' />
           </div>
-          {/* <div className='mr-auto'> */}
             <NavLink to={'/'} className='max-sm:m-auto max-md:mr-auto'>
               <img src={logo} alt='logo' className='' />
           </NavLink>
-          {/* </div> */}
           
           <div className='flex gap-8 max-md:hidden'>
             {NavBarData.map((item, index) => (
@@ -54,7 +52,7 @@ const NavBar = () => {
 
           </div>
           {/* no need for custom icon button here as was not in the design system */}
-          <div className='relative' onClick={handleCartClick}>
+          <div className='relative' onClick={handleShowCartModal}>
             <span className='absolute -top-2 -right-2 bg-primary_orange text-secondary_black rounded-full w-5 h-5 flex items-center justify-center text-overline font-bold'>{getItemsCount()}</span>
             <img 
               src={cartIcon} 
@@ -64,9 +62,8 @@ const NavBar = () => {
           </div>
                   
         </div>
-        {/* <hr className=' bg-tertiary_grey_outline ' /> */}
       </ScreenCap>
-      {isCartOpen && <CartModal onClick={handleCartClick} />}
+      {isCartOpen && <CartModal handleShowCartModal={handleShowCartModal} />}
       {isDrawed&&<MenuModal handleCloseModal={handleDrawer}/>}
     </div>
    

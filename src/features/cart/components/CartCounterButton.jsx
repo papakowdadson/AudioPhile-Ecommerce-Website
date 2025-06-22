@@ -1,8 +1,7 @@
 import React from 'react'
-
+import { CustomLogger } from '../../../utils/customLogger'
 const CartCounterButton = ({label,handleIncrement,handleDecrement,item}) => {
-  console.log("====CArt counter item======")
-  console.log(item)
+  CustomLogger("====CArt counter item======",item)
   return (
     <div className='flex gap-4 bg-tertiary_grey text-secondary_black px-4 py-2 rounded-sm   transition-colors duration-300 w-fit'>
       {/* cart counter button is used on both product details and cart modal screen hence the conditional rendering */}

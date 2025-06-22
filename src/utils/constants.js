@@ -8,7 +8,3 @@ export const EMAIL_REG_EXP       = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 // CONTACT VALIDATION CONSTANTS
 export const PHONE_VALIDATION_API_URL = 'https://phonevalidation.abstractapi.com/v1/'
 export const PHONE_VALIDATION_API_KEY = '002f7a9d4a47437b857b0f0429466817';
-
-
-// "http://localhost:5000";
-export const BASE_URL = "http://localhost:5000";

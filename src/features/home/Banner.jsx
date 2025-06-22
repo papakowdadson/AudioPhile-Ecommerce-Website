@@ -14,7 +14,7 @@ const Banner = () => {
   return (
     <div className='bg-[#121212]' >
       <ScreenCap>
-        <div className=' flex justify-between max-md:justify-center pl-2 pr-2 items-center gap-8 h-[calc(100svh-73px)] max-md:flex-col border-t-tertiary_grey border-t-2'>
+        <div className=' flex justify-between max-md:justify-center pl-2 pr-2 items-center gap-8 h-[calc(100svh-73px)] max-md:flex-col border-t-tertiary_grey border-t-2 overflow-clip'>
             <div className='space-y-6 text-tertiary_grey flex-1 max-md:absolute max-md:my-auto max-md:flex-col max-md:flex max-md:items-center'>
                 <p className='text-overline tracking-widest opacity-50' >NEW PRODUCT</p>
                 <h1 className='text-h1 max-sm:text-[36px] max-sm:font-bold max-sm:leading-tight' >

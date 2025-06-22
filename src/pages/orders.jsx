@@ -4,7 +4,9 @@ import axios from "axios";
 import MyOrder from "../features/orders/myOrders";
 import { CartContext } from "../context/cartContext";
 import noOrder from '../assets/noOrders.svg'
+import { CustomLogger } from "../utils/customLogger";
 
+// Order Page is out of scope
 function OrdersPage() {
   const {user} =useContext(CartContext)
   const [allData, setAllData] = useState([]);
@@ -13,24 +15,24 @@ function OrdersPage() {
   const FetchOrders = async () => {
     setLoading(true);
     try {
-      console.log("fetching orders");
+      CustomLogger("fetching orders");
       const response = await axios.get(
         `${process.env.REACT_APP_BASE_URL}/api/orders/${user.userId}`
       );
-      console.log("beforeresdata", response.data);
+      CustomLogger("beforeresdata", response.data);
       if (response.status === 200) {
         const data = await response.data;
         setAllData(data);
       } else {
-        console.log("vresdata", response.data);
+        CustomLogger("vresdata", response.data);
         toast("Error Loading Orders", {
           position: toast.POSITION.TOP_RIGHT,
         });
-        console.log(response);
+        CustomLogger('====response===',response);
       }
       setLoading(false);
     } catch (error) {
-      console.log(error, error);
+      CustomLogger('error', error);
       toast("Error Loading Orders", {
         position: toast.POSITION.TOP_RIGHT,
       });

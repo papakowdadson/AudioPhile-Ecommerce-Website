@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cartContext";
 import CheckoutModal from "../features/checkout/CheckoutModal";
 import {isNameValid,isEmailValid,isContactValid,isAddressValid,isZipCodeValid,isCityValid,isCountryValid,isPaymentMethodValid,isEmoneyPINValid} from "../utils/middleware"
+import { CustomLogger } from "../utils/customLogger";
 
 const CheckoutPage = () => {
     const { 
@@ -17,7 +18,6 @@ const CheckoutPage = () => {
       ,getShippingFee,
       getVAT,
       getGrandTotal} = useContext(CartContext);
-    // console.log("======checkout user====",user.userId)
   
   const [isVisible,setIsVisible] = useState(false)
   const [formDataError,setFormDataError] = useState(
@@ -48,11 +48,8 @@ const CheckoutPage = () => {
     });
 
     const handleFormData = (e)=>{
-      console.log('====Setting form data====',e)
-      let {id,value,name} = e.target
-      console.log(id)
-      console.log(value)
-      console.log(name)
+      let {value,name} = e.target
+  
       setFormData((prev)=>({...prev,[name]:value}))
       handleInputValidation(name,value)
     }
@@ -84,9 +81,7 @@ const CheckoutPage = () => {
           setFormDataError((prev)=>({...prev,[key]:cityRes[1]}))
           break;
         case "countryError":
-          console.log("===validation country===")
           let countryRes = isCountryValid(value)
-          console.log("country res",countryRes)
           setFormDataError((prev)=>({...prev,[key]:countryRes[1]}))
           break;
         case "paymentMethodError":
@@ -94,11 +89,11 @@ const CheckoutPage = () => {
           setFormDataError((prev)=>({...prev,[key]:paymentMethodRes[1]}))
           break;
         case "emoneyNumberError":
-          let emoneyNumberRes = isContactValid(value)
+          let emoneyNumberRes = formData.paymentMethod!="e-Money"?[true, ""] : isContactValid(value)
           setFormDataError((prev)=>({...prev,[key]:emoneyNumberRes[1]}))
           break;
         case "emoneyPINError":
-          let emoneyPINRes = isEmoneyPINValid(value)
+          let emoneyPINRes = formData.paymentMethod!="e-Money"?[true, ""] : isEmoneyPINValid(value)
           setFormDataError((prev)=>({...prev,[key]:emoneyPINRes[1]}))
           break;
       
@@ -141,10 +136,10 @@ const CheckoutPage = () => {
           validationResult = isPaymentMethodValid(fieldValue);
           break;
         case "emoneyNumber":
-          validationResult = isContactValid(fieldValue); 
+          validationResult = formData.paymentMethod!="e-Money"?[true, ""] : isContactValid(fieldValue); 
           break;
         case "emoneyPIN":
-          validationResult = isEmoneyPINValid(fieldValue);
+          validationResult = formData.paymentMethod!="e-Money"?[true, ""] : isEmoneyPINValid(fieldValue);
           break;
         default:
           validationResult = [true, ""]; 
@@ -168,11 +163,11 @@ const CheckoutPage = () => {
       const formIsValid = handleIsFormValid();
 
       if (!formIsValid) {
-        console.log("Form has validation errors.");
+        CustomLogger("Form has validation errors.");
         return;
       }
       else{
-        console.log('checking out orders...',items)
+        CustomLogger('checking out orders...',items)
         let newProductList = items.map((item)=>{
           return {'productId':item.id,'quatity':item.qty,'productName':item.name,'productImageUrl':item.image}
         })

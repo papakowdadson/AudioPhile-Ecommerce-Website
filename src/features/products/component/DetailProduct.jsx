@@ -2,6 +2,7 @@ import { useState,useEffect, useContext } from 'react'
 import PrimaryButton from '../../../components/primaryButton'
 import CartCounterButton from '../../cart/components/CartCounterButton'
 import { CartContext } from '../../../context/cartContext'
+import { CustomLogger } from '../../../utils/customLogger'
 
 const DetailProduct = ({product}) => {
     const cartContext = useContext(CartContext)
@@ -9,11 +10,9 @@ const DetailProduct = ({product}) => {
     const [potentialPurchase,setPotentialPurchase] = useState([])
     
     useEffect(()=>{
-        console.log("===passed current potential===")
-        console.log(product)
+        CustomLogger("===passed current potential===",product)
         setPotentialPurchase(()=>[product])
-        console.log("===after current potential===")
-        console.log(potentialPurchase)
+        CustomLogger("===after current potential===",potentialPurchase)
 
     },[product])
     

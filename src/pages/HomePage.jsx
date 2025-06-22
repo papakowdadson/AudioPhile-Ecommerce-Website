@@ -7,7 +7,7 @@ import UseProducts from "../Hooks/UseProducts";
 
 const HomePage = () => {
   const {products, loading, error} = UseProducts();
-
+  
   return (
     <div className="flex flex-col justify-between pt-[73px]">
       <Banner/>

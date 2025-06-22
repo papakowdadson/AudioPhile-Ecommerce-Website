@@ -8,6 +8,7 @@ import VisionSection from "../features/home/VisionSection";
 import UseProducts from "../Hooks/UseProducts";
 import ProductDetailsSection from '../features/products/ProductDetailsSection'
 import TertiaryButton from "../components/TertiaryButton";
+import { CustomLogger } from "../utils/customLogger";
 
 
 const ProductsDetailsPage = () => {
@@ -15,19 +16,17 @@ const ProductsDetailsPage = () => {
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
   const {slug} = useParams();
-  console.log('====slug====')
-  console.log(slug)
+  CustomLogger('====slug====',slug)
   
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = findProduct(slug)
-        console.log("===Found product===");
-        console.log(response);
+        CustomLogger("===Found product===",response);
         setProduct(response)
       } catch (error) {
-        console.log(error, error);
+        CustomLogger('error', error);
       }
       
     };

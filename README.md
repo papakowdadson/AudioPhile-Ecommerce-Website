@@ -1,8 +1,12 @@
+
 # Project Description
 [Customers Portal] Ecommerce Website for managing accessories shop.
 
-# Project Initialized with Create React App
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Figma File
+https://www.figma.com/design/XQxcFmwMAAcbjYdfX3imcm/audiophile-ecommerce-website?node-id=0-1&p=f&t=4MW4VQTrgVi6dzg2-0
+
+##Live Project Link 
+https://audio-phile-ecommerce-website.vercel.app/
 
 ## Available Scripts
 In the project directory, you can run:
@@ -16,10 +20,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 - Create a `.env` file
-- Paste `REACT_APP_BASE_URL=https://ecommerce-backend-9tly.onrender.com` if you want to use my backedserver
+- Paste `REACT_APP_BASE_URL=Your API base url`
 
 ### `npm test`
 Run test for this project
+`NB: I am yet to write Test for this project`
 
 ### `npm run build`
 Builds the app for production to the `build` folder.\

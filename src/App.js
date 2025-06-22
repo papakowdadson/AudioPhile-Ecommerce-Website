@@ -19,7 +19,8 @@ function App() {
               <Route path="/products" element={<ProductsPage />} /> {/*accepts category query ie. ?category={category} */}
               <Route path="/products/productdetails/:slug" element={<ProductsDetailsPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/orders" element={<OrdersPage/>}/>
+              {/* TODO: Implement orders page to track single or all orders */}
+              <Route path="/orders/:orderID" element={<OrdersPage/>}/>
             </Routes>
             <Footer /> 
           </Router>
