@@ -11,8 +11,11 @@ const CartModal = ({onClick}) => {
     const navigate = useNavigate()
 
     const HandleNavigateToCheckout = ()=>{
-        onClick()
-        navigate('/checkout')
+        if(getItemsCount()>0){
+            onClick()
+            navigate('/checkout')
+        }
+      
 
     }
 
