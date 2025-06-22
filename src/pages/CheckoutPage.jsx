@@ -49,12 +49,12 @@ const CheckoutPage = () => {
 
     const handleFormData = (e)=>{
       console.log('====Setting form data====',e)
-      e.preventDefault()
-      let {id,value} = e.target
+      let {id,value,name} = e.target
       console.log(id)
       console.log(value)
-      setFormData((prev)=>({...prev,[id]:value}))
-      handleInputValidation(id,value)
+      console.log(name)
+      setFormData((prev)=>({...prev,[name]:value}))
+      handleInputValidation(name,value)
     }
     const handleInputValidation = (id,value) =>{
       const key = id.concat("Error")
@@ -92,8 +92,8 @@ const CheckoutPage = () => {
           setFormDataError((prev)=>({...prev,[key]:paymentMethodRes[1]}))
           break;
         case "emoneyNumberError":
-          let emailemoneyNumberRes = isContactValid(value)
-          setFormDataError((prev)=>({...prev,[key]:emailemoneyNumberRes[1]}))
+          let emoneyNumberRes = isContactValid(value)
+          setFormDataError((prev)=>({...prev,[key]:emoneyNumberRes[1]}))
           break;
         case "emoneyPINError":
           let emoneyPINRes = isEmoneyPINValid(value)
@@ -105,35 +105,92 @@ const CheckoutPage = () => {
       }
 
     }
-    const handleIsFormValid=()=>{
-      Object.entries(formData).map((key,value)=>handleInputValidation(key,value))
-      let combinedErrorString=Object.values(formDataError).join('')
-      return combinedErrorString.length>0?false:true 
+    const handleIsFormValid = () => {
+    let isValid = true;
+    const newErrors = {};
 
-    }
+    Object.entries(formData).forEach(([fieldId, fieldValue]) => {
+      const errorKey = `${fieldId}Error`;
+      let validationResult;
+
+      switch (fieldId) { 
+        case "name":
+          validationResult = isNameValid(fieldValue);
+          break;
+        case "email":
+          validationResult = isEmailValid(fieldValue);
+          break;
+        case "contact":
+          validationResult = isContactValid(fieldValue);
+          break;
+        case "address":
+          validationResult = isAddressValid(fieldValue);
+          break;
+        case "zipcode":
+          validationResult = isZipCodeValid(fieldValue);
+          break;
+        case "city":
+          validationResult = isCityValid(fieldValue);
+          break;
+        case "country":
+          validationResult = isCountryValid(fieldValue);
+          break;
+        case "paymentMethod":
+          validationResult = isPaymentMethodValid(fieldValue);
+          break;
+        case "emoneyNumber":
+          validationResult = isContactValid(fieldValue); 
+          break;
+        case "emoneyPIN":
+          validationResult = isEmoneyPINValid(fieldValue);
+          break;
+        default:
+          validationResult = [true, ""]; 
+          break;
+      }
+
+      if (!validationResult[0]) {
+        isValid = false;
+      }
+      newErrors[errorKey] = validationResult[1];
+    });
+
+    setFormDataError((prev)=>({...prev,...newErrors}));
+
+    return isValid;
+};
 
     
     const handleFormSubmit=(e)=>{
       e.preventDefault()
-      console.log('checking out orders...',items)
-      let newProductList = items.map((item)=>{
-        return {'productId':item.id,'quatity':item.qty,'productName':item.name,'productImageUrl':item.image}
-      })
-  
-      const newData = { 
-      "userId":user.userId,
-      "products":newProductList,
-      "amount":getGrandTotal(),
-      "address":`${formData.address} `,
+      const formIsValid = handleIsFormValid();
+
+      if (!formIsValid) {
+        console.log("Form has validation errors.");
+        return;
       }
-      // TODO: Send new data to a post request api 
-      handleShowCheckoutModal()
+      else{
+        console.log('checking out orders...',items)
+        let newProductList = items.map((item)=>{
+          return {'productId':item.id,'quatity':item.qty,'productName':item.name,'productImageUrl':item.image}
+        })
+    
+        const newData = { 
+        "userId":user.userId,
+        "products":newProductList,
+        "amount":getGrandTotal(),
+        "address":`${formData.address} `,
+        }
+        // TODO: Send new data to a post request api 
+        handleResetForm()
+        handleShowCheckoutModal()
+      }
+      
+     
 
     }
     const handleShowCheckoutModal=()=>{
       setIsVisible((prev)=>!prev)
-      !isVisible&&handleResetForm()
-
     }
     const handleResetForm =()=>{
       setFormData({
@@ -148,6 +205,18 @@ const CheckoutPage = () => {
       "emoneyNumber":"",
       "emoneyPIN":""
       })
+      setFormDataError({
+      "nameError":"",
+      "emailError":"",
+      "contactError":"",
+      "addressError":"",
+      "zipcodeError":"",
+      "cityError":"",
+      "countryError":"",
+      "paymentMethodError":"",
+      "emoneyNumberError":"",
+      "emoneyPINError":""
+      })
 
     }
 
@@ -157,7 +226,7 @@ const CheckoutPage = () => {
         <ScreenCap>
           <div className="flex gap-4 max-lg:flex-col max-lg:px-4 py-12" >
             <CheckoutForm formDataError={formDataError} handleFormData={handleFormData} formData={formData} />
-            <CheckoutSummary subtotal={getTotalPrice} handleIsFormValid={handleIsFormValid} handleCheckout={handleFormSubmit} loading={loading} shipping={getShippingFee} VAT={getVAT} grandTotal={getGrandTotal} items={items} />
+            <CheckoutSummary subtotal={getTotalPrice} handleCheckout={handleFormSubmit} loading={loading} shipping={getShippingFee} VAT={getVAT} grandTotal={getGrandTotal} items={items} />
           </div>
         </ScreenCap>
         {isVisible&&<CheckoutModal removeAllItems={removeAllItems} grandTotal={getGrandTotal} items={items} />}

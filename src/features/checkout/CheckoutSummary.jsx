@@ -4,7 +4,7 @@ import PrimaryButton from "../../components/primaryButton";
 import CheckoutItem from "./component/CheckoutItem";
 import {formatMoney} from "../../utils/formatMoney"
 
-export const CheckoutSummary = ({handleIsFormValid,handleCheckout,items,subtotal,shipping,VAT,grandTotal,loading}) => {
+export const CheckoutSummary = ({handleCheckout,items,subtotal,shipping,VAT,grandTotal,loading}) => {
 
   return (
     <div className="bg-white rounded-lg p-6 space-y-6 h-fit min-w-[350px]">
@@ -37,7 +37,7 @@ export const CheckoutSummary = ({handleIsFormValid,handleCheckout,items,subtotal
                 </div>
               </div>
               
-              <PrimaryButton isFullWidth={true} label={"Continue & Pay"} onClick={(!loading&&handleIsFormValid())?handleCheckout:null} />
+              <PrimaryButton isFullWidth={true} label={"Continue & Pay"} onClick={(!loading)?handleCheckout:null} />
             </div>
   );
 };
