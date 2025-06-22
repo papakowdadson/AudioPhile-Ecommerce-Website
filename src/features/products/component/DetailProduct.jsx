@@ -36,12 +36,12 @@ const DetailProduct = ({product}) => {
     }
 
   return (
-    <div className={`flex justify-between items-center gap-8 max-sm:flex-col`} >
-        <div className='bg-tertiary_grey rounded-lg p-8 sm:w-full md:w-[281px] lg:w-[540px]'>
-            <img src={product.image.desktop} alt={product.name}/>
+    <div className={`flex justify-between items-center gap-8 max-sm:flex-col h-fit `} >
+        <div className='bg-tertiary_grey rounded-lg p-8 h-full max-sm:w-full max-md:min-w-[281px] lg:w-[540px] '>
+            <img src={product.image.desktop} alt={product.name} className=' max-sm:my-0 max-md:my-20'/>
         </div>
         <div className='space-y-6 max-w-[445px] max-sm:flex-col max-sm:max-w-full' >
-            {product.new&&<p className='text-primary_orange'>New Product</p>}
+            {product.new&&<p className='text-primary_orange tracking-widest'>NEW PRODUCT</p>}
             <h1 className='text-h1 max-md:text-h4' >
                 <span>{product.name.split(' ').slice(0,-1).join(" ")}</span>
                 <br/>

@@ -39,15 +39,15 @@ export function CartProvider(props) {
       localStorage.setItem("items",JSON.stringify(items));
   }
 
-  function addItemToCart(_id, product) {
+  function addItemToCart(id, product) {
     console.log("====adding Item===");
     setItems((prevItems) => {
-      const item = prevItems.find((item) => item._id === _id);
+      const item = prevItems.find((item) => item.id === id);
       if (!item) {
         const newItems = [
           ...prevItems,
           {
-            _id,
+            id,
             qty: 1,
             name: product.name,
             price: product.price,
@@ -60,7 +60,7 @@ export function CartProvider(props) {
         return newItems
       } else {
         const newItems = prevItems.map((item) => {
-          if (item._id === _id) {
+          if (item.id === id) {
             return {
               ...item,
               qty: item.qty + 1,
@@ -76,11 +76,11 @@ export function CartProvider(props) {
     });
   }
 
-  const removeItem = (_id) => {
+  const removeItem = (id) => {
     setItems((prevItems) => {
       const updatedItems = prevItems
         .map((item) => {
-          if (item._id === _id) {
+          if (item.id === id) {
             return {
               ...item,
               qty: item.qty - 1,

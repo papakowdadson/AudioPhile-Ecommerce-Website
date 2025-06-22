@@ -11,7 +11,7 @@ const ProductFeatures = ({features,includes}) => {
       <div className='space-y-8 min-w-[350px] max-sm:flex max-sm:flex-col max-sm:space-y-8 max-md:flex max-md:justify-between max-md:items-start max-md:space-y-0'>
         <h1 className='text-h3 font-bold'>IN THE BOX</h1>
         <div >
-          {includes.map((include)=><IncludeItem include={include}  />)}
+          {includes.map((include,index)=><IncludeItem key={index} include={include}  />)}
         </div>
 
       </div>

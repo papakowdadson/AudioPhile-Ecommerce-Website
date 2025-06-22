@@ -11,13 +11,13 @@ const OrderItem = ({ item }) => {
 
       <div className="flex items-center w-3/12 justify-end">
         <div className="w-5 h-5 flex rounded-full border-rose-300 items-center border justify-center">
-          <button type="button" onClick={() => removeItem(item._id, item)}>
+          <button type="button" onClick={() => removeItem(item.id, item)}>
             -
           </button>
         </div>
         <p className="m-1">{item.qty}</p>
         <div className="w-5 h-5 flex rounded-full border-rose-300 items-center border justify-center">
-          <button type="button" onClick={() => addItemToCart(item._id, item)}>
+          <button type="button" onClick={() => addItemToCart(item.id, item)}>
             +
           </button>
         </div>
