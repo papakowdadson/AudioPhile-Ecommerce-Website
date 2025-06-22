@@ -9,7 +9,7 @@ const HomePage = () => {
   const {products, loading, error} = UseProducts();
 
   return (
-    <div className="flex flex-col justify-between pt-[96px]">
+    <div className="flex flex-col justify-between pt-[73px]">
       <Banner/>
       <ScreenCap>
         <div className="my-24 space-y-24 max-lg:px-4">

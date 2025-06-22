@@ -42,7 +42,7 @@ const ProductsDetailsPage = () => {
   }
 
   return (
-    <div className="flex flex-col justify-between pt-[96px]">
+    <div className="flex flex-col justify-between pt-[73px]">
       <ScreenCap>      
 
         <div className="mt-10 mb-24 space-y-16 max-lg:px-4">      

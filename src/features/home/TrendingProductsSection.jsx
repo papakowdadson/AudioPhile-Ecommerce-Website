@@ -35,7 +35,7 @@ const TrendingProductsSection = () => {
         <div className='p-16 bg-tertiary_grey rounded-lg h-72 flex items-center'
             style={{ backgroundImage: `url(${ZX7})` }}>
             <div className='text-secondary_black space-y-4'>
-                <h1 className='text-h4'>
+                <h1 className='text-h4 font-bold'>
                     ZX7 SPEAKER
                 </h1> 
                 <SecondaryButton label={"See Product"} onClick={()=>handleSeeProduct("zx7-speaker")}/>
@@ -43,10 +43,13 @@ const TrendingProductsSection = () => {
             </div>
 
         </div>
-        <div className='flex gap-8 h-72 max-md:h-fit max-md:flex-col'>
-            <img src={YX1} alt='zx9Speaker' className='rounded-lg max-md:w-full'/>
+        <div className='flex gap-8 h-72 max-sm:h-fit max-sm:flex-col' >
+            <div className='w-full h-full max-sm:h-72 rounded-lg overflow-hidden bg-cover bg-center bg-no-repeat' 
+            style={{ backgroundImage: `url(${YX1})` }}> 
+                {/* <img src={YX1} alt='zx9Speaker' className='h-full  max-sm:w-full'/> */}
+            </div>
             <div className='bg-tertiary_grey p-16 rounded-lg flex-col flex  text-secondary_black space-y-4 w-full justify-center'>
-                <h1 className='text-h4'>
+                <h1 className='text-h4 font-bold'>
                     YX1 EARPHONES
                 </h1>
                 <SecondaryButton label={"See Product"} onClick={()=>handleSeeProduct("yx1-earphones")}/>

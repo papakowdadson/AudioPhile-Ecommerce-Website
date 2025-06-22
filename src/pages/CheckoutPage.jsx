@@ -153,7 +153,7 @@ const CheckoutPage = () => {
 
  
     return (
-      <div className="bg-tertiary_grey w-full pt-[96px]">
+      <div className="bg-tertiary_grey w-full pt-[73px]">
         <ScreenCap>
           <div className="flex gap-4 max-lg:flex-col max-lg:px-4 py-12" >
             <CheckoutForm formDataError={formDataError} handleFormData={handleFormData} formData={formData} />

@@ -1,14 +1,15 @@
-import React from 'react'
-import FacebookIcon from '../assets/shared/desktop/icon-facebook.svg'
-import InstagramIcon from '../assets/shared/desktop/icon-instagram.svg'
-import TwitterIcon from '../assets/shared/desktop/icon-twitter.svg'
+import { ReactComponent as FacebookIcon } from '../assets/shared/desktop/icon-facebook.svg';
+import { ReactComponent as InstagramIcon } from '../assets/shared/desktop/icon-instagram.svg'; // Import as ReactComponent
+import { ReactComponent as TwitterIcon } from '../assets/shared/desktop/icon-twitter.svg';   // Import as ReactComponent
 
 const SocailsSection = () => {
+  const iconClasses = "cursor-pointer fill-white hover:fill-primary_orange transition-colors duration-300";
+
   return (
-    <div className='flex flex-row gap-8 h-full'>
-        <img src={FacebookIcon} alt='facebookicon'/>
-        <img src={TwitterIcon} alt='twitterIcon'/>
-        <img src={InstagramIcon} alt='instagramIcon'/>
+    <div className='flex flex-row gap-8 h-full items-center'>
+       <FacebookIcon className={iconClasses} />
+       <TwitterIcon className={iconClasses} />
+       <InstagramIcon className={iconClasses} />
     </div>
   )
 }

@@ -30,7 +30,7 @@ const Footer = () => {
 
             </div>         
         </div>
-        <div className='flex justify-between gap-8 mb-12 items-baseline max-sm:flex-col max-sm:items-center'>
+        <div className='flex justify-between gap-8 mb-12 max-sm:flex-col max-sm:items-center items-end'>
           <div>
             <p className='text-tertiary_white font-medium text-body max-w-md opacity-50 max-sm:text-center'>
               Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.
@@ -39,7 +39,7 @@ const Footer = () => {
           
           <SocailsSection/>
         </div>
-        <p className='text-tertiary_white font-medium text-body opacity-50' >Copyright 2021. All Rights Reserved</p>
+        <p className='text-tertiary_white font-medium text-body opacity-50 max-md:text-center' >Copyright 2021. All Rights Reserved</p>
       </ScreenCap>
       
     </div>

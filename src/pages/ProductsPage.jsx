@@ -14,7 +14,7 @@ const ProductsPage = () => {
   const category = searchParams.get('category');
 
   return (
-    <div className="flex flex-col justify-between pt-[96px]">
+    <div className="flex flex-col justify-between pt-[73px]">
         <CatergoryBanner categoryName={category}/>
         
         <ScreenCap>        

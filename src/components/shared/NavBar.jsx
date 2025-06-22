@@ -30,7 +30,7 @@ const NavBar = () => {
   return (
     <div className='bg-secondary_black text-white py-6 fixed w-full z-10'>
       <ScreenCap>
-        <div className='flex gap-4 max-sm:justify-between max-md:justify-normal justify-between items-center mb-6 text-tertiary_white max-lg:px-4 '>
+        <div className='flex gap-4 max-sm:justify-between max-md:justify-normal justify-between items-center text-tertiary_white max-lg:px-4 '>
           <div className='hidden max-md:block' onClick={handleDrawer}>
               <img src={hamburgerIcon} alt='humburger' />
           </div>
@@ -64,7 +64,7 @@ const NavBar = () => {
           </div>
                   
         </div>
-        <hr className=' bg-tertiary_grey_outline ' />
+        {/* <hr className=' bg-tertiary_grey_outline ' /> */}
       </ScreenCap>
       {isCartOpen && <CartModal onClick={handleCartClick} />}
       {isDrawed&&<MenuModal handleCloseModal={handleDrawer}/>}
