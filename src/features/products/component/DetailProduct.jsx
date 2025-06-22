@@ -9,9 +9,13 @@ const DetailProduct = ({product}) => {
     const [potentialPurchase,setPotentialPurchase] = useState([])
     
     useEffect(()=>{
-        setPotentialPurchase([product])
+        console.log("===passed current potential===")
+        console.log(product)
+        setPotentialPurchase(()=>[product])
+        console.log("===after current potential===")
+        console.log(potentialPurchase)
 
-    },[])
+    },[product])
     
    
     const handleAddToCartClick=()=>{

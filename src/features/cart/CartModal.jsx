@@ -19,7 +19,7 @@ const CartModal = ({onClick}) => {
     return (
     <div className='fixed top-[0px] w-full h-full bg-black bg-opacity-50 flex items-start justify-center z-50' onClick={onClick} >
         <ScreenCap> 
-            <div className='flex justify-end place-items-end pt-[96px] md:min-w-[768px] lg:min-w-[1024px] max-lg:px-4'>
+            <div className='flex justify-end place-items-end pt-[73px] md:min-w-[768px] lg:min-w-[1024px] max-lg:px-4'>
                 <div className='bg-white p-6 rounded-lg shadow-lg w-96 space-y-4' onClick={e => e.stopPropagation()}>
                     <div className='flex justify-between'>
                             <h2 className='text-secondary_black text-h6 font-bold mb-4'>{`Your Cart (${getItemsCount()})`}</h2>
