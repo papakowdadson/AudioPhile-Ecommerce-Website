@@ -7,6 +7,7 @@ import ScreenCap from "../layout/ScreenCap";
 import VisionSection from "../features/home/VisionSection";
 import UseProducts from "../Hooks/UseProducts";
 import ProductDetailsSection from '../features/products/ProductDetailsSection'
+import TertiaryButton from "../components/TertiaryButton";
 
 
 const ProductsDetailsPage = () => {
@@ -34,11 +35,18 @@ const ProductsDetailsPage = () => {
     fetchData();
   }, [loading,slug]);
 
+  const handleBackNavigation = (e)=>{
+    e.preventDefault()
+    navigate(-1)
+
+  }
+
   return (
     <div className="flex flex-col justify-between pt-[96px]">
+      <ScreenCap>      
 
-      <ScreenCap>
-        <div className="my-24 space-y-24 max-lg:px-4">
+        <div className="mt-10 mb-24 space-y-16 max-lg:px-4">      
+          <TertiaryButton onClick={handleBackNavigation} label={"Go Back"} hasIcon={false} isUpperCase={false} isFullWidth={false} />
           {(loading)? <p>Loading.....</p>:product==null?<div>Product not found</div>:<ProductDetailsSection product={product} />}
           <ProductsSection/>
           <VisionSection/>
