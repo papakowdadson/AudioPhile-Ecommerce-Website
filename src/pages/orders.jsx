@@ -22,7 +22,7 @@ function OrdersPage() {
         const data = await response.data;
         setAllData(data);
       } else {
-        console.log("vvresdata", response.data);
+        console.log("vresdata", response.data);
         toast("Error Loading Orders", {
           position: toast.POSITION.TOP_RIGHT,
         });

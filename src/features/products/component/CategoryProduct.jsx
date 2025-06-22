@@ -9,8 +9,8 @@ const CategoryProduct = ({product,index}) => {
     }
   return (
     <div className={`flex max-md:flex-col justify-between items-center gap-8 ${index%2==0?'flex-row':'flex-row-reverse'}`} >
-        <div className='bg-tertiary_grey rounded-lg p-8 w-[480px] max-md:w-full'>
-            <img src={`${product.image.desktop}`} alt={product.name}/>
+        <div className='bg-tertiary_grey rounded-lg p-8 w-[480px] max-md:w-full  '>
+            <img src={`${product.image.desktop}`} alt={product.name} className='object-contain max-md:h-[352px] m-auto'/>
         </div>
         <div className='space-y-6 max-w-[445px] max-md:max-w-full max-md:flex max-md:flex-col max-md:items-center max-md:text-center' >
             {product.new&&<p className='text-primary_orange tracking-widest'>NEW PRODUCT</p>}
