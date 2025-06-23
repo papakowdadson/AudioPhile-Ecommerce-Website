@@ -10,7 +10,6 @@ const UseProducts = () => {
     useEffect(() => {
         (async () => {
             try {
-                await new Promise(resolve => setTimeout(resolve, 2000));
 
                 const response = await fetch('/data/data.json');
                 if (!response.ok) throw new Error('Network response was not ok');
