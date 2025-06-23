@@ -8,7 +8,7 @@ const CategoryProduct = ({product,index}) => {
                 navigate(`/products/productdetails/${slug}`)
     }
   return (
-    <div className={`flex max-md:flex-col justify-between items-center gap-8 ${index%2==0?'flex-row':'flex-row-reverse'}`} >
+    <div className={`flex max-md:flex-col justify-between items-center gap-8 ${index%2===0?'flex-row':'flex-row-reverse'}`} >
         <div className='bg-tertiary_grey rounded-lg p-8 w-[480px] max-md:w-full  '>
             <img src={`${product.image.desktop}`} alt={product.name} className='object-contain max-md:h-[352px] m-auto'/>
         </div>

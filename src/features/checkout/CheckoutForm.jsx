@@ -59,7 +59,7 @@ const CheckoutForm = ({formDataError,formData,handleFormData}) => {
                     </div>
                     
                   </div>
-                  {paymentMethod=="e-Money"?
+                  {paymentMethod==="e-Money"?
                     <div className='gap-4 grid grid-cols-2 max-sm:grid-cols-1'>
                       <InputTextArea hasError={emoneyNumberError.length>0} errorMessage={emoneyNumberError} placeholder={'233200032276'} id={"emoneyNumber"} name={"emoneyNumber"} field={emoneyNumber} onChange={handleFormData} label={"e-Money Number"}/>
                       <InputTextArea hasError={emoneyPINError.length>0} errorMessage={emoneyPINError} placeholder={'6912'} id={"emoneyPIN"} name={"emoneyPIN"} field={emoneyPIN} onChange={handleFormData} label={"e-Money PIN"}/>

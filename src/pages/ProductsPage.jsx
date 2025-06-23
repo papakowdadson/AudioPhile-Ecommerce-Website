@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate,  useSearchParams  } from "react-router-dom";
 import ProductsSection from "../features/home/ProductsSection";
 import ScreenCap from "../layout/ScreenCap";
@@ -8,7 +7,7 @@ import UseProducts from "../Hooks/UseProducts";
 import CategoryProductsSection from "../features/products/CategoryProductsSection";
 
 const ProductsPage = () => {
-  const {products,groupedProducts, loading, error} = UseProducts();
+  const {groupedProducts, loading, error} = UseProducts();
   const navigate = useNavigate();
   let [searchParams, setSearchParams]=  useSearchParams ();
   const category = searchParams.get('category');

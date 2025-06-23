@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import PrimaryButton from "../../components/primaryButton";
 import CheckoutItem from "./component/CheckoutItem";
 import {formatMoney} from "../../utils/formatMoney"

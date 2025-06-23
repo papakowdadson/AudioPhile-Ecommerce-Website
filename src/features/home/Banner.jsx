@@ -1,4 +1,3 @@
-import React from 'react'
 import PrimaryButton from '../../components/primaryButton'
 import ScreenCap from '../../layout/ScreenCap'
 import imageHero from '../../assets/home/desktop/image-hero.png' 

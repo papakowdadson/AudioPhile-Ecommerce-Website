@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import axios from "axios";
-import { useNavigate,  useParams,  useSearchParams  } from "react-router-dom";
+import { useNavigate,  useParams  } from "react-router-dom";
 import ProductsSection from "../features/home/ProductsSection";
 import ScreenCap from "../layout/ScreenCap";
 import VisionSection from "../features/home/VisionSection";
