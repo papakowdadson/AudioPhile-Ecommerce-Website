@@ -6,6 +6,7 @@ import VisionSection from "../features/home/VisionSection";
 import UseProducts from "../Hooks/UseProducts";
 
 const HomePage = () => {
+  // use products hook to fetch products incase homepage has to be dynamic
   const {products, loading, error} = UseProducts();
   
   return (

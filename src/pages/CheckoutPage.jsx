@@ -2,7 +2,6 @@ import { useState,useContext } from "react";
 import ScreenCap from "../layout/ScreenCap";
 import CheckoutSummary from "../features/checkout/CheckoutSummary";
 import CheckoutForm from "../features/checkout/CheckoutForm";
-import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cartContext";
 import CheckoutModal from "../features/checkout/CheckoutModal";
 import {isNameValid,isEmailValid,isContactValid,isAddressValid,isZipCodeValid,isCityValid,isCountryValid,isPaymentMethodValid,isEmoneyPINValid} from "../utils/middleware"
@@ -89,11 +88,11 @@ const CheckoutPage = () => {
           setFormDataError((prev)=>({...prev,[key]:paymentMethodRes[1]}))
           break;
         case "emoneyNumberError":
-          let emoneyNumberRes = formData.paymentMethod!="e-Money"?[true, ""] : isContactValid(value)
+          let emoneyNumberRes = formData.paymentMethod!=="e-Money"?[true, ""] : isContactValid(value)
           setFormDataError((prev)=>({...prev,[key]:emoneyNumberRes[1]}))
           break;
         case "emoneyPINError":
-          let emoneyPINRes = formData.paymentMethod!="e-Money"?[true, ""] : isEmoneyPINValid(value)
+          let emoneyPINRes = formData.paymentMethod!=="e-Money"?[true, ""] : isEmoneyPINValid(value)
           setFormDataError((prev)=>({...prev,[key]:emoneyPINRes[1]}))
           break;
       
@@ -136,10 +135,10 @@ const CheckoutPage = () => {
           validationResult = isPaymentMethodValid(fieldValue);
           break;
         case "emoneyNumber":
-          validationResult = formData.paymentMethod!="e-Money"?[true, ""] : isContactValid(fieldValue); 
+          validationResult = formData.paymentMethod!=="e-Money"?[true, ""] : isContactValid(fieldValue); 
           break;
         case "emoneyPIN":
-          validationResult = formData.paymentMethod!="e-Money"?[true, ""] : isEmoneyPINValid(fieldValue);
+          validationResult = formData.paymentMethod!=="e-Money"?[true, ""] : isEmoneyPINValid(fieldValue);
           break;
         default:
           validationResult = [true, ""]; 
